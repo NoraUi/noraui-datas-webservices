@@ -1,0 +1,5 @@
+spring:
+    application:
+        name: noraui-datas-webservices
+server:
+    port: 8084

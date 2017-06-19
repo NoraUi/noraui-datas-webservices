@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.noraui</groupId>
+    <artifactId>noraui-datas-webservices</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>noraui-datas-webservices</name>
+
+    <description>This REST Web service contains any sample for unit tests of NoraUi.</description>
+
+    <url>https://github.com/NoraUi/noraui-datas-webservices</url>
+
+    <organization>
+        <name>NoraUi</name>
+        <url>https://github.com/NoraUi</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>BSD license</name>
+            <comments>All source code is under the BSD license.</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>sgrillon14</id>
+            <name>Stéphane GRILLON</name>
+        </developer>
+        <developer>
+            <id>ArKniiD</id>
+            <name>Nicolas HALLOUIN</name>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/NoraUi/noraui-datas-webservices.git</connection>
+        <developerConnection>scm:git:git@github.com:NoraUi/noraui-datas-webservices.git</developerConnection>
+        <url>git://github.com/NoraUi/noraui-datas-webservices.git</url>
+        <tag>v1.0.0</tag>
+    </scm>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.1.RELEASE</version>
+    </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <noraui.version>2.5.5-SNAPSHOT</noraui.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- springframework -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- NoraUi -->
+        <dependency>
+            <groupId>com.github.noraui</groupId>
+            <artifactId>noraui</artifactId>
+            <version>${noraui.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.13</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
