@@ -29,7 +29,13 @@ Errors cases:
 
 # JSON response (Example)
 
-{columns:["author","zip","city","element","element2","date","title"]}
+{"columns":["author","zip","city","element","element2","date","title"],"rows":null}
+
+# XML response (Example)
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><dataModel><columns>author</columns><columns>zip</columns><columns>city</columns><columns>element</columns><columns>element2</columns><columns>date</columns><columns>title</columns></dataModel>
+```
 
 # License
 
