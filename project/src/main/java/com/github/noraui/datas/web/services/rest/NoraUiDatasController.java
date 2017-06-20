@@ -1,17 +1,16 @@
-/* Copyright (c) 2017 NoraUi Organization https://github.com/NoraUi
+/*
+ * Copyright (c) 2017 NoraUi Organization https://github.com/NoraUi
  * All rights reserved.
- * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the <organization> nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- * 
+ * * Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
+ * * Redistributions in binary form must reproduce the above copyright
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
+ * * Neither the name of the <organization> nor the
+ * names of its contributors may be used to endorse or promote products
+ * derived from this software without specific prior written permission.
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -59,7 +58,7 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/columns", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+    @RequestMapping(value = "/{model}/columns", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DataModel> getColumnsModel(@PathVariable String model) {
         LOGGER.debug("getColumnsModel : model[{}]", model);
         DataModel dataModel = modelService.getColumns(model);
@@ -70,7 +69,7 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/nbLines", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+    @RequestMapping(value = "/{model}/nbLines", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Integer> getNbLines(@PathVariable String model) {
         LOGGER.debug("getColumnsModel : model[{}]", model);
         Integer nbLines = modelService.getNbLines(model);
@@ -81,8 +80,7 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE,
-            produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+    @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> readValue(@PathVariable String model, @PathVariable int colIndex, @PathVariable int line) {
         LOGGER.debug("readValue : model[{}{}{}]", model, colIndex, line);
         String value = modelService.readValue(model, colIndex, line);
@@ -93,8 +91,7 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.PATCH, consumes = MediaType.ALL_VALUE,
-            produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+    @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.PATCH, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DataModel> writeValue(@RequestBody String value, @PathVariable String model, @PathVariable int colIndex, @PathVariable int line) {
         LOGGER.debug("writeValue : model[{}{}{}]", model, colIndex, line);
         DataModel dataModel = modelService.writeValue(model, colIndex, line, value);
@@ -105,7 +102,7 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+    @RequestMapping(value = "/{model}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DataModel> readLine(@PathVariable String model, @PathVariable int line) {
         LOGGER.debug("getColumnsModel : model[{}{}]", model, line);
         DataModel dataModel = modelService.readLine(model, line);
