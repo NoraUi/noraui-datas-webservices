@@ -117,7 +117,7 @@ public class ModelServiceImpl implements ModelService {
         if ("hello".equals(model)) {
             DataModel dataModel = new DataModel();
             dataModel.setColumns(hello.getColumns());
-            dataModel.setRows(Arrays.asList(new Row(hello.getRows().get(line - 1).getColumns(), hello.getRows().get(line - 1).getErrorStepIndex())));
+            dataModel.setRows(Arrays.asList(new Row(hello.getRows().get(line - 1).getColumns(), hello.getRows().get(line - 1).getErrorStepIndex(), hello.getRows().get(line - 1).getResult())));
             return dataModel;
         }
         return null;
@@ -126,7 +126,7 @@ public class ModelServiceImpl implements ModelService {
     @Override
     public DataModel writeValue(String model, int colIndex, int line, String value) {
         if ("hello".equals(model)) {
-            if (colIndex - 1 == hello.getRows().get(line - 1).getColumns().size()) {
+            if (colIndex == hello.getRows().get(line - 1).getColumns().size()) {
                 hello.getRows().get(line - 1).setResult(value);
             } else {
                 hello.getRows().get(line - 1).getColumns().set(colIndex - 1, value);

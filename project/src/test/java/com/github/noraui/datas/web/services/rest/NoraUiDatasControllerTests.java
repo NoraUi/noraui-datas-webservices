@@ -30,9 +30,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.web.client.RestTemplate;
@@ -110,7 +110,9 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
     public void getHelloWriteValue() {
         int column = 7;
         int line = 1;
-        DataModel dataModel = new TestRestTemplate().patchForObject("http://localhost:" + port + "/noraui/api/hello/column/" + column + "/line/" + line, "MY TITLE", DataModel.class);
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        DataModel dataModel = restTemplate.patchForObject("http://localhost:" + port + "/noraui/api/hello/column/" + column + "/line/" + line, "MY TITLE", DataModel.class);
         assertThat(dataModel.getRows().get(line - 1).getColumns().get(column - 1)).isEqualTo("MY TITLE");
     }
 
@@ -118,7 +120,9 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
     public void getHelloWriteValueOnResult() {
         int column = 8;
         int line = 1;
-        DataModel dataModel = new TestRestTemplate().patchForObject("http://localhost:" + port + "/noraui/api/hello/column/" + column + "/line/" + line, "OK", DataModel.class);
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        DataModel dataModel = restTemplate.patchForObject("http://localhost:" + port + "/noraui/api/hello/column/" + column + "/line/" + line, "OK", DataModel.class);
         assertThat(dataModel.getRows().get(line - 1).getResult()).isEqualTo("OK");
     }
 
