@@ -101,7 +101,10 @@ public class ModelServiceImpl implements ModelService {
     public String readValue(String model, int colIndex, int line) {
         if ("hello".equals(model)) {
             if (colIndex - 1 == hello.getRows().get(line - 1).getColumns().size()) {
-                return hello.getRows().get(line - 1).getResult();
+                int esi = hello.getRows().get(line - 1).getErrorStepIndex();
+                if (esi != -1) {
+                    return String.valueOf(esi);
+                }
             } else {
                 return hello.getRows().get(line - 1).getColumns().get(colIndex - 1);
             }
