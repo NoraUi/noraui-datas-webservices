@@ -108,7 +108,7 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
 
     @Test
     public void getHelloWriteValue() {
-        int column = 7;
+        int column = 6;
         int line = 1;
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
@@ -118,7 +118,7 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
 
     @Test
     public void getHelloWriteValueOnResult() {
-        int column = 8;
+        int column = 7;
         int line = 1;
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
