@@ -58,7 +58,7 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/columns", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{model}/columns", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<DataModel> getColumnsModel(@PathVariable String model) {
         LOGGER.debug("getColumnsModel : model[{}]", model);
         DataModel dataModel = modelService.getColumns(model);
@@ -69,7 +69,7 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/nbLines", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{model}/nbLines", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<Integer> getNbLines(@PathVariable String model) {
         LOGGER.debug("getColumnsModel : model[{}]", model);
         Integer nbLines = modelService.getNbLines(model);
@@ -80,7 +80,8 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE,
+            produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<String> readValue(@PathVariable String model, @PathVariable int colIndex, @PathVariable int line) {
         LOGGER.debug("readValue : model[{}{}{}]", model, colIndex, line);
         String value = modelService.readValue(model, colIndex, line);
@@ -91,7 +92,8 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.PATCH, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.PATCH, consumes = MediaType.ALL_VALUE,
+            produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<DataModel> writeValue(@RequestBody String value, @PathVariable String model, @PathVariable int colIndex, @PathVariable int line) {
         LOGGER.debug("writeValue : model[{}{}{}]", model, colIndex, line);
         DataModel dataModel = modelService.writeValue(model, colIndex, line, value);
@@ -102,7 +104,7 @@ public class NoraUiDatasController {
      * @param model
      * @return all columns of model
      */
-    @RequestMapping(value = "/{model}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{model}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<DataModel> readLine(@PathVariable String model, @PathVariable int line) {
         LOGGER.debug("getColumnsModel : model[{}{}]", model, line);
         DataModel dataModel = modelService.readLine(model, line);
