@@ -4,7 +4,7 @@ mvn clean package
 java -jar target/noraui-datas-webservices-1.0.0-SNAPSHOT.jar &
 PID=$!
 sleep 15
-curl -s http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.json
+curl --header "Accept: application/json" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.json
 kill -9 $PID
 
 echo "Let's look at the actual results: `cat target/actual_hello_columns.json`"
