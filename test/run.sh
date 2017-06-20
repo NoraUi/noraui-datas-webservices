@@ -1,6 +1,7 @@
 cd $(dirname $0)
 cd ../project
 mvn clean package
+pwd
 java -jar target/noraui-datas-webservices-1.0.0-SNAPSHOT.jar &
 PID=$!
 sleep 15
