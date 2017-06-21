@@ -5,8 +5,8 @@ pwd
 java -jar target/noraui-datas-webservices-1.0.0-SNAPSHOT.jar &
 PID=$!
 sleep 20
-curl --header "Accept: application/json" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.json
-curl --header "Accept: application/xml" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.xml
+curl -s --header "Accept: application/json" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.json
+curl -s --header "Accept: application/xml" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.xml
 kill -9 $PID
 
 echo "Let's look at the actual results: `cat target/actual_hello_columns.json`"
