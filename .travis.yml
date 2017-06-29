@@ -12,7 +12,7 @@ matrix:
       - test/after_success.sh
 
   - language: node_js
-    node_js: 6.9
+    node_js: 8.1.3
     before_install:
       - chmod +x test/runFrontend.sh
     before_script:
