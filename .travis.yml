@@ -2,27 +2,19 @@ sudo: false
 matrix:
   include:
   - language: java
-
-    jdk:
-      - oraclejdk8
-
+    jdk: oraclejdk8
     before_install:
       - chmod +x test/run.sh
       - chmod +x test/after_success.sh
- 
     script:
       - test/run.sh
-
     after_success: 
       - test/after_success.sh
 
   - language: node_js
-    node_js:
-      - "6.9"
-
+    node_js: 6.9
     before_script:
       - npm install -g @angular/cli
-      
     script:
       - cd webclient
       - ng serve
