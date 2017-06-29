@@ -40,6 +40,6 @@ pwd
 ls -l
 ng serve
 sleep 30
-curl -s http://localhost:8084/noraui/api/hello/columns
+curl -s http://localhost:4200/
 
 exit
