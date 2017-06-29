@@ -1,3 +1,4 @@
+sudo: false
 matrix:
   include:
   - language: java
@@ -14,8 +15,6 @@ matrix:
 
     after_success: 
       - test/after_success.sh
-
-    sudo: false
 
   - language: node_js
     node_js:
