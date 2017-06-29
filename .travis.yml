@@ -16,7 +16,7 @@ matrix:
     before_install:
       - chmod +x test/runFrontend.sh
     before_script:
-      - npm install
       - npm install -g @angular/cli
+      - npm install
     script:
       - test/runFrontend.sh
