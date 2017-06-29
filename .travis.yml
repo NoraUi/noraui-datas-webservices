@@ -6,6 +6,8 @@ matrix:
     before_install:
       - chmod +x test/run.sh
       - chmod +x test/after_success.sh
+    before_script:
+       - cd project  
     script:
       - test/run.sh
     after_success: 
@@ -14,9 +16,7 @@ matrix:
   - language: node_js
     node_js: 6.9
     before_script:
+      - cd webclient
       - npm install -g @angular/cli
     script:
-      - cd webclient
       - ng serve
-
-
