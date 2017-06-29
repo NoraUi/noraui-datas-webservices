@@ -1,22 +1,31 @@
-sudo: false
+matrix:
+  include:
+  - language: java
 
-language: java
+    jdk:
+      - oraclejdk8
 
-node_js:
-  - "6.9"
-
-jdk:
- - oraclejdk8
-
-before_install:
- - chmod +x test/run.sh
- - chmod +x test/after_success.sh
-
-before_script:
-  - npm install -g @angular/cli
+    before_install:
+      - chmod +x test/run.sh
+      - chmod +x test/after_success.sh
  
-script:
- - test/run.sh
+    script:
+      - test/run.sh
 
-after_success: 
- - test/after_success.sh
+    after_success: 
+      - test/after_success.sh
+
+    sudo: false
+
+  - language: node_js
+    node_js:
+      - "6.9"
+
+    before_script:
+      - npm install -g @angular/cli
+      
+    script:
+      - cd webclient
+      - ng serve
+
+
