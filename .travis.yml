@@ -10,7 +10,7 @@ before_install:
  - chmod +x test/after_success.sh
  
 install:
- - npm install -g angular-cli
+ - npm install -g angular/cli
  
 script:
  - test/run.sh
