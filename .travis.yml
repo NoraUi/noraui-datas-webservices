@@ -4,19 +4,18 @@ matrix:
   - language: java
     jdk: oraclejdk8
     before_install:
-      - chmod +x test/run.sh
+      - chmod +x test/runBackend.sh
       - chmod +x test/after_success.sh
-    before_script:
-       - cd project  
     script:
-      - test/run.sh
+      - test/runBackend.sh
     after_success: 
       - test/after_success.sh
 
   - language: node_js
     node_js: 6.9
+    before_install:
+      - chmod +x test/runFrontend.sh
     before_script:
-      - cd webclient
       - npm install -g @angular/cli
     script:
-      - ng serve
+      - test/runFrontend.sh
