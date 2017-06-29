@@ -3,14 +3,17 @@ sudo: false
 language: java
 
 jdk:
-- oraclejdk8
+ - oraclejdk8
 
 before_install:
  - chmod +x test/run.sh
  - chmod +x test/after_success.sh
  
+install:
+ - npm install -g angular-cli
+ 
 script:
-- test/run.sh
+ - test/run.sh
 
 after_success: 
-- test/after_success.sh
+ - test/after_success.sh
