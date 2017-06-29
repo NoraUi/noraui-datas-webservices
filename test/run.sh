@@ -35,11 +35,4 @@ fi
 
 rm -rf target
 
-cd ../webclient
-pwd
-ls -l
-ng serve
-sleep 30
-curl -s http://localhost:4200/
-
 exit
