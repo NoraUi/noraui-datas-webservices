@@ -6,7 +6,8 @@ ls -l
 npm install
 
 echo "***** START ANGULAR 4 APPLICATION"
-ng serve &
+npm start
+sleep 60
 
 echo "***** CURL to home url"
 curl -s http://localhost:4200
