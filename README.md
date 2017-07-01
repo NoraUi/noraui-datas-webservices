@@ -11,6 +11,7 @@ This REST Web service contains any sample for unit tests of NoraUi.
 * Spring Boot
 * Spring Web
 * TestNG
+* Angular 4
 * Travis CI
 
 # Run Anywhere
@@ -46,3 +47,6 @@ BSD, See License.txt for details
 The [issue tracker](https://github.com/NoraUi/noraui-datas-webservices/issues) is the preferred channel for bug reports, features requests and submitting pull requests.
 
 For pull requests, editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+
+
+![footer](https://noraui.github.io/img/end.png)
