@@ -40,7 +40,8 @@ Errors cases:
 
 # License
 
-BSD, See License.txt for details
+[![license](https://img.shields.io/github/license/NoraUi/noraui-datas-webservices.svg)](https://github.com/NoraUi/noraui-datas-webservices/blob/master/LICENSE)
+BSD, See LICENSE for details
 
 # Contributing
 
