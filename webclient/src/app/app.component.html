@@ -1,15 +1,6 @@
 <!--The whole content below can be removed with the new code.-->
 <div style="text-align:center">
-  <h1>
-    Hi, Welcome to {{title}}!!
-  </h1>
-  <h2>{{hero.name}}</h2>
-  <div><label>id: </label>{{hero.id}}</div>
-  <div><label>name: </label>{{hero.name}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name">
-  </div>
+  <hero-detail [hero]="selectedHero"></hero-detail>
   <img width="300" src="https://avatars0.githubusercontent.com/u/26145171?v=3&s=200" />
 </div>
 
