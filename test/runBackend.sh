@@ -5,6 +5,20 @@ pwd
 java -jar target/noraui-datas-webservices-1.0.0-SNAPSHOT.jar &
 PID=$!
 sleep 30
+
+curl -u admin:secret -s http://localhost:8088/health > target/actual_health.json
+echo "Let's look at the actual health: `cat target/actual_health.json`"
+echo "And compare it to: `cat ../test/health.json`"
+if diff -w ../test/health.json target/actual_health.json
+    then
+        echo SUCCESS
+        let ret=0
+    else
+        echo FAIL
+        let ret=255
+        exit $ret
+fi
+
 curl -s --header "Accept: application/json" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.json
 curl -s --header "Accept: application/xml" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.xml
 kill -9 $PID
