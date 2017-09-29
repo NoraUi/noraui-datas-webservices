@@ -2,6 +2,8 @@
 
 This REST Web service contains any sample for unit tests of NoraUi.
 
+![doc](/doc/noraui-datas-ux.png)
+
 # Travis CI status
 
 [![Build Status](https://travis-ci.org/NoraUi/noraui-datas-webservices.svg?branch=master)](https://travis-ci.org/NoraUi/noraui-datas-webservices)
