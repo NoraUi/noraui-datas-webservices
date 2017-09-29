@@ -10,6 +10,7 @@ This REST Web service contains any sample for unit tests of NoraUi.
 
 * Spring Boot
 * Spring Web
+* Spring Actuator
 * TestNG
 * Angular 4
 * Travis CI
@@ -37,6 +38,10 @@ Errors cases:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?><dataModel><columns>author</columns><columns>zip</columns><columns>city</columns><columns>element</columns><columns>element2</columns><columns>date</columns><columns>title</columns></dataModel>
 ```
+
+# Spring Boot Actuator
+
+* http://localhost:8088/health (CAUTION: login/password) return {"status":"UP"}
 
 # License
 
