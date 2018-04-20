@@ -80,16 +80,16 @@
             <version>${noraui.version}</version>
             <exclusions>
                 <exclusion>
-                    <groupId>io.cucumber</groupId>
-                    <artifactId>gherkin</artifactId>
+                    <groupId>com.oracle.jdbc</groupId>
+                    <artifactId>ojdbc8</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>xalan</groupId>
-                    <artifactId>serializer</artifactId>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>xalan</groupId>
-                    <artifactId>xalan</artifactId>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
