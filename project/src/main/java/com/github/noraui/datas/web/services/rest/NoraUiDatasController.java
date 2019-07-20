@@ -38,7 +38,7 @@ public class NoraUiDatasController {
      */
     @RequestMapping(value = "/{model}/columns", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<DataModel> getColumnsModel(@PathVariable String model) {
-        LOGGER.debug("getColumnsModel : model[{}]", model);
+        LOGGER.info("getColumnsModel : model[{}]", model);
         DataModel dataModel = modelService.getColumns(model);
         return Optional.ofNullable(dataModel).map(result -> new ResponseEntity<>(result, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
@@ -49,7 +49,7 @@ public class NoraUiDatasController {
      */
     @RequestMapping(value = "/{model}/nbLines", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<Integer> getNbLines(@PathVariable String model) {
-        LOGGER.debug("getColumnsModel : model[{}]", model);
+        LOGGER.info("getColumnsModel : model[{}]", model);
         Integer nbLines = modelService.getNbLines(model);
         return Optional.ofNullable(nbLines).map(result -> new ResponseEntity<>(result, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
@@ -61,7 +61,7 @@ public class NoraUiDatasController {
     @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE,
             produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<String> readValue(@PathVariable String model, @PathVariable int colIndex, @PathVariable int line) {
-        LOGGER.debug("readValue : model[{}{}{}]", model, colIndex, line);
+        LOGGER.info("readValue : model[{}{}{}]", model, colIndex, line);
         String value = modelService.readValue(model, colIndex, line);
         return Optional.ofNullable(value).map(result -> new ResponseEntity<>(result, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
@@ -73,7 +73,7 @@ public class NoraUiDatasController {
     @RequestMapping(value = "/{model}/column/{colIndex}/line/{line}", method = RequestMethod.PATCH, consumes = MediaType.ALL_VALUE,
             produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<DataModel> writeValue(@RequestBody String value, @PathVariable String model, @PathVariable int colIndex, @PathVariable int line) {
-        LOGGER.debug("writeValue : model[{}{}{}]", model, colIndex, line);
+        LOGGER.info("writeValue : model[{}{}{}]", model, colIndex, line);
         DataModel dataModel = modelService.writeValue(model, colIndex, line, value);
         return ResponseEntity.ok().body(dataModel);
     }
@@ -84,7 +84,7 @@ public class NoraUiDatasController {
      */
     @RequestMapping(value = "/{model}/line/{line}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<DataModel> readLine(@PathVariable String model, @PathVariable int line) {
-        LOGGER.debug("getColumnsModel : model[{}{}]", model, line);
+        LOGGER.info("getColumnsModel : model[{}{}]", model, line);
         DataModel dataModel = modelService.readLine(model, line);
         return Optional.ofNullable(dataModel).map(result -> new ResponseEntity<>(result, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
