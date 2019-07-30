@@ -1,15 +1,14 @@
 spring:
-    application:
-        name: noraui-datas-webservices
+  application:
+    name: noraui-datas-webservices
+  security:
+    user:
+      name: admin
+      password: secret
+      roles: SUPERUSER
 server:
-    port: 8084
+  port: 8084
 management:
+  server:
     port: 8088
     address: localhost
-    security:
-        enabled: true
-        role: SUPERUSER
-security:
-    user:
-        name: admin
-        password: secret
