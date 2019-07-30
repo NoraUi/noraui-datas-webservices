@@ -76,14 +76,16 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public String readValue(String model, int colIndex, int line) {
-        if ("hello".equals(model)) {
+        if ("hello".equals(model) && hello.getRows().size() > line - 1 ) {
             if (colIndex - 1 == hello.getRows().get(line - 1).getColumns().size()) {
                 int esi = hello.getRows().get(line - 1).getErrorStepIndex();
                 if (esi != -1) {
                     return String.valueOf(esi);
                 }
-            } else {
+            } else if (colIndex - 1 < hello.getRows().get(line - 1).getColumns().size()) {
                 return hello.getRows().get(line - 1).getColumns().get(colIndex - 1);
+            } else {
+                return null;
             }
         }
         return null;
@@ -91,7 +93,7 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public DataModel readLine(String model, int line) {
-        if ("hello".equals(model)) {
+        if ("hello".equals(model) && hello.getRows().size() > line - 1) {
             DataModel dataModel = new DataModel();
             dataModel.setColumns(hello.getColumns());
             dataModel.setRows(Arrays.asList(new Row(hello.getRows().get(line - 1).getColumns(), hello.getRows().get(line - 1).getErrorStepIndex(), hello.getRows().get(line - 1).getResult())));

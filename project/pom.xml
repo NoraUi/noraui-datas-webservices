@@ -46,16 +46,16 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.12.RELEASE</version>
+        <version>2.1.6.RELEASE</version>
     </parent>
 
     <properties>
         <java.version>1.8</java.version>
-        <noraui.version>3.2.0-SNAPSHOT</noraui.version>
+        <noraui.version>4.0.0-SNAPSHOT</noraui.version>
         <nexus-staging-maven-plugin.version>1.6.7</nexus-staging-maven-plugin.version>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
     </properties>
-
+    
     <dependencies>
 
         <!-- springframework -->
@@ -132,6 +132,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

@@ -47,4 +47,43 @@ public class ModelServiceImplTests extends AbstractTestNGSpringContextTests {
         assertThat(actualDataModel).isNull();
     }
 
+    @Test
+    public void readLine() {
+        DataModel actualDataModel = modelService.readLine("hello", 8);
+        assertThat(actualDataModel.getRows().get(0).getColumns().size()).isEqualTo(7);
+        assertThat(actualDataModel.getRows().get(0).getColumns().get(0)).isEqualTo("Jenkins T8");
+        assertThat(actualDataModel.getRows().get(0).getColumns().get(1)).isEqualTo("");
+        assertThat(actualDataModel.getRows().get(0).getColumns().get(2)).isEqualTo("Rennes");
+        assertThat(actualDataModel.getRows().get(0).getColumns().get(3)).isEqualTo("smile");
+        assertThat(actualDataModel.getRows().get(0).getColumns().get(4)).isEqualTo("smile");
+        assertThat(actualDataModel.getRows().get(0).getColumns().get(5)).isEqualTo("");
+        assertThat(actualDataModel.getRows().get(0).getColumns().get(6)).isEqualTo("");
+        assertThat(actualDataModel.getRows().get(0).getErrorStepIndex()).isEqualTo(54);
+        assertThat(actualDataModel.getRows().get(0).getResult()).isNull();
+    }
+
+    @Test
+    public void readLineError() {
+        DataModel actualDataModel = modelService.readLine("hello", 9);
+        assertThat(actualDataModel).isNull();
+    }
+
+    @Test
+    public void readValue() {
+        String actual = modelService.readValue("hello", 1, 8);
+        assertThat(actual).isEqualTo("Jenkins T8");
+    }
+
+    @Test
+    public void readValueColumnError() {
+        String actual = modelService.readValue("hello", 9, 8);
+        assertThat(actual).isNull();
+    }
+
+    @Test
+    public void readValueLineError() {
+        String actual = modelService.readValue("hello", 1, 9);
+        assertThat(actual).isNull();
+    }
+
 }
