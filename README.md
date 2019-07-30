@@ -10,7 +10,7 @@ This REST Web service contains any sample for unit tests of NoraUi.
 
 # Technology
 
-* Spring Boot
+* Spring Boot 2
 * Spring Web
 * Spring Actuator
 * TestNG
@@ -43,7 +43,7 @@ Errors cases:
 
 # Spring Boot Actuator
 
-* http://localhost:8088/health (CAUTION: login/password) return {"status":"UP"}
+* http://localhost:8088/actuator/health (CAUTION: login/password) return {"status":"UP"}
 
 # License
 
