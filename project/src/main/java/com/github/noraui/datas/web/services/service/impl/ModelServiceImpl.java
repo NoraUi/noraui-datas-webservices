@@ -159,16 +159,20 @@ public class ModelServiceImpl implements ModelService {
             } else if ("bonjour".equals(model)) {
                 dataModel.setColumns(bonjour.getColumns());
             }
-            dataModel.setRows(Arrays.asList(new Row(hello.getRows().get(line - 1).getColumns(), hello.getRows().get(line - 1).getErrorStepIndex(), hello.getRows().get(line - 1).getResult())));
+            if(line > 0){
+                dataModel.setRows(Arrays.asList(new Row(hello.getRows().get(line - 1).getColumns(), hello.getRows().get(line - 1).getErrorStepIndex(), hello.getRows().get(line - 1).getResult())));
+            }
             return dataModel;
-        } else if ("blog".equals(model)  && blog.getRows().size() > line - 1) {
+        } else if ("blog".equals(model) && blog.getRows().size() > line - 1) {
             DataModel dataModel = new DataModel();
             if ("blog".equals(model)) {
                 dataModel.setColumns(blog.getColumns());
             } else if ("blog".equals(model)) {
                 dataModel.setColumns(blog.getColumns());
             }
-            dataModel.setRows(Arrays.asList(new Row(blog.getRows().get(line - 1).getColumns(), blog.getRows().get(line - 1).getErrorStepIndex(), blog.getRows().get(line - 1).getResult())));
+            if(line > 0){
+                dataModel.setRows(Arrays.asList(new Row(blog.getRows().get(line - 1).getColumns(), blog.getRows().get(line - 1).getErrorStepIndex(), blog.getRows().get(line - 1).getResult())));
+            }
             return dataModel;
         }
         return null;

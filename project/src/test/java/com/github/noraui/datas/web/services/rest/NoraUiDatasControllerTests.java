@@ -73,6 +73,24 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
     }
 
     @Test
+    public void getHelloReadLineHeader() {
+        ResponseEntity<DataModel> entity = new RestTemplate().getForEntity("http://localhost:" + port + "/noraui/api/hello/line/0", DataModel.class);
+        
+        assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        
+        assertThat(entity.getBody().getColumns().size()).isEqualTo(7);
+        assertThat(entity.getBody().getColumns().get(0)).isEqualTo("author");
+        assertThat(entity.getBody().getColumns().get(1)).isEqualTo("zip");
+        assertThat(entity.getBody().getColumns().get(2)).isEqualTo("city");
+        assertThat(entity.getBody().getColumns().get(3)).isEqualTo("element");
+        assertThat(entity.getBody().getColumns().get(4)).isEqualTo("element2");
+        assertThat(entity.getBody().getColumns().get(5)).isEqualTo("date");
+        assertThat(entity.getBody().getColumns().get(6)).isEqualTo("title");
+        
+        assertThat(entity.getBody().getRows()).isNull();
+    }
+    
+    @Test
     public void getHelloReadLine() {
         ResponseEntity<DataModel> entity = new RestTemplate().getForEntity("http://localhost:" + port + "/noraui/api/hello/line/1", DataModel.class);
         assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -84,7 +102,7 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
         assertThat(entity.getBody().getRows().get(0).getColumns().get(4)).isEqualTo("smile");
         assertThat(entity.getBody().getRows().get(0).getColumns().get(5)).isEqualTo("16/01/2020");
         assertThat(entity.getBody().getRows().get(0).getColumns().get(6)).isEqualTo("");
-        assertThat(entity.getBody().getRows().get(0).getResult()).isEqualTo(null);
+        assertThat(entity.getBody().getRows().get(0).getResult()).isNull();
     }
 
     @Test

@@ -46,10 +46,36 @@ public class ModelServiceImplTests extends AbstractTestNGSpringContextTests {
         DataModel actualDataModel = modelService.getColumns("fake");
         assertThat(actualDataModel).isNull();
     }
+    
+    @Test
+    public void readLineHeader() {
+        DataModel actualDataModel = modelService.readLine("hello", 0);
+        
+        assertThat(actualDataModel.getColumns().size()).isEqualTo(7);
+        assertThat(actualDataModel.getColumns().get(0)).isEqualTo("author");
+        assertThat(actualDataModel.getColumns().get(1)).isEqualTo("zip");
+        assertThat(actualDataModel.getColumns().get(2)).isEqualTo("city");
+        assertThat(actualDataModel.getColumns().get(3)).isEqualTo("element");
+        assertThat(actualDataModel.getColumns().get(4)).isEqualTo("element2");
+        assertThat(actualDataModel.getColumns().get(5)).isEqualTo("date");
+        assertThat(actualDataModel.getColumns().get(6)).isEqualTo("title");
+        
+        assertThat(actualDataModel.getRows()).isNull();
+    }
 
     @Test
     public void readLine() {
         DataModel actualDataModel = modelService.readLine("hello", 8);
+        
+        assertThat(actualDataModel.getColumns().size()).isEqualTo(7);
+        assertThat(actualDataModel.getColumns().get(0)).isEqualTo("author");
+        assertThat(actualDataModel.getColumns().get(1)).isEqualTo("zip");
+        assertThat(actualDataModel.getColumns().get(2)).isEqualTo("city");
+        assertThat(actualDataModel.getColumns().get(3)).isEqualTo("element");
+        assertThat(actualDataModel.getColumns().get(4)).isEqualTo("element2");
+        assertThat(actualDataModel.getColumns().get(5)).isEqualTo("date");
+        assertThat(actualDataModel.getColumns().get(6)).isEqualTo("title");
+        
         assertThat(actualDataModel.getRows().get(0).getColumns().size()).isEqualTo(7);
         assertThat(actualDataModel.getRows().get(0).getColumns().get(0)).isEqualTo("Jenkins T8");
         assertThat(actualDataModel.getRows().get(0).getColumns().get(1)).isEqualTo("");
