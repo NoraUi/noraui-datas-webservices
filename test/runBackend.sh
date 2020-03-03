@@ -20,7 +20,7 @@ if diff -w ../test/health.json target/actual_health.json
 fi
 
 curl -s --header "Accept: application/json" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.json
-curl -s -v --header "Accept: application/xml" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.xml
+curl -s --header "Accept: application/xml" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.xml
 kill -9 $PID
 
 echo "Let's look at the actual results: `cat target/actual_hello_columns.json`"
