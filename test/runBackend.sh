@@ -23,7 +23,7 @@ curl -s --header "Accept: application/json" http://localhost:8084/noraui/api/hel
 
 echo "after curl json"
 
-curl -s --header "Accept: application/xml" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.xml
+curl -s -v --header "Accept: application/xml" http://localhost:8084/noraui/api/hello/columns > target/actual_hello_columns.xml
 
 sleep 3
 echo "after curl xml"
