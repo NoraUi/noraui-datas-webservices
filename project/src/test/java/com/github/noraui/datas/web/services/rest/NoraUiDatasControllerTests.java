@@ -11,11 +11,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.testng.annotations.Test;
 
@@ -54,7 +58,9 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
 
     @Test
     public void getHelloNbLines() {
-        ResponseEntity<Integer> entity = new RestTemplate().getForEntity("http://localhost:" + port + "/noraui/api/hello/nbLines", Integer.class);
+        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+        headers.add("Accept", "application/json");
+        ResponseEntity<Integer> entity = new RestTemplate().exchange("http://localhost:" + port + "/noraui/api/hello/nbLines", HttpMethod.GET, new HttpEntity<Object>(headers), Integer.class);
         assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(entity.getBody()).isEqualTo(8);
     }
@@ -75,9 +81,9 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
     @Test
     public void getHelloReadLineHeader() {
         ResponseEntity<DataModel> entity = new RestTemplate().getForEntity("http://localhost:" + port + "/noraui/api/hello/line/0", DataModel.class);
-        
+
         assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        
+
         assertThat(entity.getBody().getColumns().size()).isEqualTo(7);
         assertThat(entity.getBody().getColumns().get(0)).isEqualTo("author");
         assertThat(entity.getBody().getColumns().get(1)).isEqualTo("zip");
@@ -86,10 +92,10 @@ public class NoraUiDatasControllerTests extends AbstractTestNGSpringContextTests
         assertThat(entity.getBody().getColumns().get(4)).isEqualTo("element2");
         assertThat(entity.getBody().getColumns().get(5)).isEqualTo("date");
         assertThat(entity.getBody().getColumns().get(6)).isEqualTo("title");
-        
+
         assertThat(entity.getBody().getRows()).isNull();
     }
-    
+
     @Test
     public void getHelloReadLine() {
         ResponseEntity<DataModel> entity = new RestTemplate().getForEntity("http://localhost:" + port + "/noraui/api/hello/line/1", DataModel.class);
